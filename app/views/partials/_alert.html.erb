@@ -1,0 +1,10 @@
+<p class="notice"><%= notice %></p>
+
+<% if alert.present? %>
+  <div class="bg-red-200 text-red-800 rounded p-4 flex space-x-4">
+    <%= render "partials/icons/solid/x_circle" %>
+    <div>
+      <%= alert %>
+    </div>
+  </div>
+<% end %>
