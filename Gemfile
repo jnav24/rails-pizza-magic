@@ -74,5 +74,7 @@ group :test do
 end
 
 gem 'devise', '~> 4.9', '>= 4.9.3'
+gem 'erb_lint', require: false
 gem 'rubocop', '~> 1.64', require: false
+gem 'rubocop-rails', '~> 2.25', '>= 2.25.1'
 # gem 'factory_bot_rails'
