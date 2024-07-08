@@ -1,46 +1,32 @@
-<div>
-  <div class="sm:mx-auto sm:w-full sm:max-w-md">
-    <div class="flex justify-center">
-        Logo
-    </div>
+<% content_for :title, "Sign in to your account" %>
 
-    <h2 class="mt-6 text-3xl font-extrabold text-center text-gray-900 leading-9">
-      Sign in to your account
-    </h2>
-  </div>
+<%= render "partials/alert" %>
 
-  <div class="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
-    <div class="px-4 py-8 bg-white shadow sm:rounded-lg sm:px-10">
-      <%= render "partials/alert" %>
-
-      <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: 'space-y-6' }) do |f| %>
-        <div class="field">
-          <%= f.label :email, class: 'block text-sm font-medium text-gray-700 leading-5' %>
-          <div class="mt-1 rounded-md shadow-sm">
-            <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md placeholder-gray-400 focus:outline-none focus:ring-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5' %>
-          </div>
-        </div>
-
-        <div class="field">
-          <%= f.label :password, class: 'block text-sm font-medium text-gray-700 leading-5' %>
-          <div class="mt-1 rounded-md shadow-sm">
-            <%= f.password_field :password, autocomplete: "current-password", class: 'appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md placeholder-gray-400 focus:outline-none focus:ring-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5' %>
-          </div>
-        </div>
-
-        <% if devise_mapping.rememberable? %>
-          <div class="field flex items-center">
-            <%= f.check_box :remember_me, class: 'form-checkbox w-4 h-4 text-indigo-600 transition duration-150 ease-in-out' %>
-            <%= f.label :remember_me, class: 'block ml-2 text-sm text-gray-900 leading-5' %>
-          </div>
-        <% end %>
-
-        <div class="actions">
-          <%= f.submit "Log in", class: 'flex justify-center w-full px-4 py-2 text-sm font-medium text-white bg-primary border border-transparent rounded-md hover:bg-primary-hover focus:outline-none focus:border-primary-focus focus:ring-primary active:bg-primary-focus transition duration-150 ease-in-out' %>
-        </div>
-      <% end %>
-
-      <%= render "devise/shared/links" %>
+<%= form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: 'space-y-6' }) do |f| %>
+  <div class="field">
+    <%= f.label :email, class: 'block text-sm font-medium text-gray-700 leading-5' %>
+    <div class="mt-1 rounded-md shadow-sm">
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md placeholder-gray-400 focus:outline-none focus:ring-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5' %>
     </div>
   </div>
-</div>
+
+  <div class="field">
+    <%= f.label :password, class: 'block text-sm font-medium text-gray-700 leading-5' %>
+    <div class="mt-1 rounded-md shadow-sm">
+      <%= f.password_field :password, autocomplete: "current-password", class: 'appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md placeholder-gray-400 focus:outline-none focus:ring-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5' %>
+    </div>
+  </div>
+
+  <% if devise_mapping.rememberable? %>
+    <div class="field flex items-center">
+      <%= f.check_box :remember_me, class: 'form-checkbox w-4 h-4 text-indigo-600 transition duration-150 ease-in-out' %>
+      <%= f.label :remember_me, class: 'block ml-2 text-sm text-gray-900 leading-5' %>
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <%= f.submit "Log in", class: 'flex justify-center w-full px-4 py-2 text-sm font-medium text-white bg-primary border border-transparent rounded-md hover:bg-primary-hover focus:outline-none focus:border-primary-focus focus:ring-primary active:bg-primary-focus transition duration-150 ease-in-out' %>
+  </div>
+<% end %>
+
+<%= render "devise/shared/links" %>

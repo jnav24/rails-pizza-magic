@@ -1,59 +1,45 @@
-<div>
-  <div class="sm:mx-auto sm:w-full sm:max-w-md">
-    <div class="flex justify-center">
-      logo
-    </div>
+<% content_for :title, 'Create a new account' %>
 
-    <h2 class="mt-6 text-3xl font-extrabold text-center text-gray-900 leading-9">
-      Create a new account
-    </h2>
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { class: "space-y-6" }) do |f| %>
+  <div class="field">
+    <%= f.label :email, class: "block text-sm font-medium text-gray-700 leading-5" %>
+    <div class="mt-1 rounded-md shadow-sm">
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md placeholder-gray-400 focus:outline-none focus:ring-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5 #{resource.errors[:email].any? ? 'border-red-300 text-red-900 placeholder-red-300 focus:border-red-300 focus:ring-red': '' }" %>
+    </div>
+    <% if resource.errors[:email].any? %>
+      <p class="mt-2 text-sm text-red-600">
+        <%= resource.errors.full_messages_for(:email).join(", ") %>
+      </p>
+    <% end %>
   </div>
 
-  <div class="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
-    <div class="px-4 py-8 bg-white shadow sm:rounded-lg sm:px-10">
-      <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { class: "space-y-6" }) do |f| %>
-        <div class="field">
-          <%= f.label :email, class: "block text-sm font-medium text-gray-700 leading-5" %>
-          <div class="mt-1 rounded-md shadow-sm">
-            <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md placeholder-gray-400 focus:outline-none focus:ring-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5 #{resource.errors[:email].any? ? 'border-red-300 text-red-900 placeholder-red-300 focus:border-red-300 focus:ring-red': '' }" %>
-          </div>
-          <% if resource.errors[:email].any? %>
-            <p class="mt-2 text-sm text-red-600">
-              <%= resource.errors.full_messages_for(:email).join(", ") %>
-            </p>
-          <% end %>
-        </div>
-
-        <div class="field">
-          <%= f.label :password, class: "block text-sm font-medium text-gray-700 leading-5" %>
-          <div class="mt-1 rounded-md shadow-sm">
-            <%= f.password_field :password, autocomplete: "new-password", class: "appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md placeholder-gray-400 focus:outline-none focus:ring-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5 #{resource.errors[:password].any? ? 'border-red-300 text-red-900 placeholder-red-300 focus:border-red-300 focus:ring-red': '' }" %>
-          </div>
-          <% if resource.errors[:password].any? %>
-            <p class="mt-2 text-sm text-red-600">
-              <%= resource.errors.full_messages_for(:password).join(", ") %>
-            </p>
-          <% end %>
-        </div>
-
-        <div class="field">
-          <%= f.label :password_confirmation, class: "block text-sm font-medium text-gray-700 leading-5" %>
-          <div class="mt-1 rounded-md shadow-sm">
-            <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md placeholder-gray-400 focus:outline-none focus:ring-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5 #{resource.errors[:password_confirmation].any? ? 'border-red-300 text-red-900 placeholder-red-300 focus:border-red-300 focus:ring-red': '' }" %>
-          </div>
-          <% if resource.errors[:password_confirmation].any? %>
-            <p class="mt-2 text-sm text-red-600">
-              <%= resource.errors.full_messages_for(:password_confirmation).join(", ") %>
-            </p>
-          <% end %>
-        </div>
-
-        <div class="actions">
-          <%= f.submit "Register", class: 'flex justify-center w-full px-4 py-2 text-sm font-medium text-white bg-primary border border-transparent rounded-md hover:bg-primary-hover focus:outline-none focus:border-primary-focus focus:ring-primary active:bg-primary-focus transition duration-150 ease-in-out' %>
-        </div>
-      <% end %>
-
-      <%= render "devise/shared/links" %>
+  <div class="field">
+    <%= f.label :password, class: "block text-sm font-medium text-gray-700 leading-5" %>
+    <div class="mt-1 rounded-md shadow-sm">
+      <%= f.password_field :password, autocomplete: "new-password", class: "appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md placeholder-gray-400 focus:outline-none focus:ring-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5 #{resource.errors[:password].any? ? 'border-red-300 text-red-900 placeholder-red-300 focus:border-red-300 focus:ring-red': '' }" %>
     </div>
+    <% if resource.errors[:password].any? %>
+      <p class="mt-2 text-sm text-red-600">
+        <%= resource.errors.full_messages_for(:password).join(", ") %>
+      </p>
+    <% end %>
   </div>
-</div>
+
+  <div class="field">
+    <%= f.label :password_confirmation, class: "block text-sm font-medium text-gray-700 leading-5" %>
+    <div class="mt-1 rounded-md shadow-sm">
+      <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md placeholder-gray-400 focus:outline-none focus:ring-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5 #{resource.errors[:password_confirmation].any? ? 'border-red-300 text-red-900 placeholder-red-300 focus:border-red-300 focus:ring-red': '' }" %>
+    </div>
+    <% if resource.errors[:password_confirmation].any? %>
+      <p class="mt-2 text-sm text-red-600">
+        <%= resource.errors.full_messages_for(:password_confirmation).join(", ") %>
+      </p>
+    <% end %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Register", class: 'flex justify-center w-full px-4 py-2 text-sm font-medium text-white bg-primary border border-transparent rounded-md hover:bg-primary-hover focus:outline-none focus:border-primary-focus focus:ring-primary active:bg-primary-focus transition duration-150 ease-in-out' %>
+  </div>
+<% end %>
+
+<%= render "devise/shared/links" %>
