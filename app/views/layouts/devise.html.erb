@@ -27,10 +27,10 @@
   <main class="flex flex-col justify-center min-h-screen py-12 bg-gray-50 sm:px-6 lg:px-8">
       <div class="sm:mx-auto sm:w-full sm:max-w-md">
         <div class="flex justify-center">
-          logo
+          <%= render "partials/logo", icon_class: "text-primary size-12", text_class: "text-4xl text-gray-600" %>
         </div>
 
-        <h2 class="mt-6 text-3xl font-extrabold text-center text-gray-900 leading-9">
+        <h2 class="mt-6 text-3xl font-light text-center text-gray-700 leading-9">
           <%= content_for(:title) %>
         </h2>
       </div>
